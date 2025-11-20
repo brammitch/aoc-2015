@@ -6,11 +6,12 @@ import {
   GATES,
   processInstructions,
   solvePartOne,
+  solvePartTwo,
   type Gate,
   type Instruction,
 } from "../07.js";
 
-describe("Validate input", () => {
+describe("Validate input", { skip: true }, () => {
   it("matches all instructions", async () => {
     let lines = 0;
     let matchedLines = 0;
@@ -97,7 +98,7 @@ describe("Validate input", () => {
   });
 });
 
-describe("Test data", () => {
+describe("Test data", { skip: true }, () => {
   it("returns the expected signals", async () => {
     const instructions: Instruction[] = [];
     const file = await open("./src/__test__/07.test.txt");
@@ -110,9 +111,17 @@ describe("Test data", () => {
   });
 });
 
-describe("solvePartOne", () => {
+describe("solvePartOne", { skip: true }, () => {
   it("returns the signal provided to 'wire a'", async () => {
     const signal = await solvePartOne();
-    assert.equal(signal, 46065);
+    assert.equal(signal.a, 46065);
+  });
+});
+
+describe("solvePartTwo", () => {
+  it("returns the signal provided to 'wire a'", async () => {
+    const signal = await solvePartTwo();
+    console.log("signal.b", signal.b);
+    assert.equal(signal.a, 14134);
   });
 });

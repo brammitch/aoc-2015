@@ -23,7 +23,8 @@ export function processInstructions(
         const output = instruction[2];
 
         // If the input is a signal (number), we can assign it to the output
-        if (isNumber(input)) {
+        // (but don't overwrite existing signals -- for part two of the problem!)
+        if (isNumber(input) && wires[output] === undefined) {
           wires[output] = parseInt(input as string, 10);
           break;
         }
@@ -135,7 +136,7 @@ export function processInstructions(
   return wires;
 }
 
-export async function solvePartOne(): Promise<number | undefined> {
+export async function solvePartOne(): Promise<Record<string, number>> {
   const instructions: Instruction[] = [];
 
   const file = await open("./src/input/07.txt");
@@ -143,6 +144,17 @@ export async function solvePartOne(): Promise<number | undefined> {
     instructions.push(line.split(" ") as unknown as Instruction);
   }
 
-  const wires = processInstructions(instructions);
-  return wires?.a;
+  return processInstructions(instructions);
+}
+
+export async function solvePartTwo() {
+  const wires = await solvePartOne();
+  const instructions: Instruction[] = [];
+
+  const file = await open("./src/input/07.txt");
+  for await (const line of file.readLines()) {
+    instructions.push(line.split(" ") as unknown as Instruction);
+  }
+
+  return processInstructions(instructions, { b: wires.a! });
 }
