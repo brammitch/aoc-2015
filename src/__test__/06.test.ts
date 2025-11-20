@@ -4,6 +4,7 @@ import { getRandomNumber } from "../00-util.js";
 import {
   countLightsTurnedOn,
   generateGrid,
+  getBrightnessOfLights,
   getNumberOfLightsLit,
   processInstruction,
   updateMatrix,
@@ -116,5 +117,13 @@ describe("testing problem scenarios", () => {
     let M = generateGrid(1_000, 1_000);
     M = processInstruction(M, "toggle 0,0 through 999,0");
     assert.equal(countLightsTurnedOn(M), 1_000);
+  });
+});
+
+describe("getBrightnessOfLights", () => {
+  it("returns the brightness of all lights", async () => {
+    const numberOfLightsLit = await getBrightnessOfLights();
+
+    assert.equal(numberOfLightsLit, 14_687_245);
   });
 });
