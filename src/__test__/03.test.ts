@@ -1,12 +1,12 @@
-import { describe, it } from "node:test";
 import assert from "node:assert";
-import { getNumberOfHousesVisited } from "../03.js";
 import fs from "node:fs/promises";
+import { describe, it } from "node:test";
+import { getNumberOfHousesVisited } from "../03.js";
 
 describe("getNumberOfHousesVisited", () => {
   it("counts the initial house", async () => {
     const count = await getNumberOfHousesVisited(">");
-    assert.ok(count === 1);
+    assert.equal(count, 1);
   });
 
   it("works with a square pattern", async () => {

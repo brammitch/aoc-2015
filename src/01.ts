@@ -1,11 +1,9 @@
 import fs from "node:fs/promises";
 
-export async function getFloors(): Promise<{
+export async function getFloors(input: string): Promise<{
   floor: number;
   position: number;
 }> {
-  const input = await fs.readFile("./src/input/01.txt", "utf-8");
-
   let floor = 0;
   let basementEntered = false;
   let position = 0;
@@ -31,7 +29,8 @@ export async function getFloors(): Promise<{
   return { floor, position };
 }
 
-const { floor, position } = await getFloors();
+const input = await fs.readFile("./src/input/01.txt", "utf-8");
+const { floor, position } = await getFloors(input);
 
 console.log("Basement entered at position:", position);
 console.log("Final floor:", floor);
