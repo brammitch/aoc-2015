@@ -11,7 +11,7 @@ import {
   type Instruction,
 } from "../07.js";
 
-describe("Validate input", { skip: true }, () => {
+describe("Validate input", () => {
   it("matches all instructions", async () => {
     let lines = 0;
     let matchedLines = 0;
@@ -98,10 +98,10 @@ describe("Validate input", { skip: true }, () => {
   });
 });
 
-describe("Test data", { skip: true }, () => {
+describe("Test data", () => {
   it("returns the expected signals", async () => {
     const instructions: Instruction[] = [];
-    const file = await open("./src/__test__/07.test.txt");
+    const file = await open("./src/input/07.test.txt");
     for await (const line of file.readLines()) {
       instructions.push(line.split(" ") as unknown as Instruction);
     }
@@ -111,7 +111,7 @@ describe("Test data", { skip: true }, () => {
   });
 });
 
-describe("solvePartOne", { skip: true }, () => {
+describe("solvePartOne", () => {
   it("returns the signal provided to 'wire a'", async () => {
     const signal = await solvePartOne();
     assert.equal(signal.a, 46065);
