@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "@types/node": "^24.10.1"
+  },
+  "dependencies": {
+    "matrix-js": "^1.7.1"
   }
 }
