@@ -58,7 +58,3 @@ export async function getTotalWrappingPaper(): Promise<{
 
   return { sqftPaper, ftRibbon };
 }
-
-const { sqftPaper, ftRibbon } = await getTotalWrappingPaper();
-console.log(`The elves' need to order ${sqftPaper} sqft of wrapping paper.`);
-console.log(`The elves' need to order ${ftRibbon} feet of ribbon.`);

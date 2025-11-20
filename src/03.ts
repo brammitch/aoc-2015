@@ -1,5 +1,3 @@
-import fs from "node:fs/promises";
-
 export function updateCoordinates(
   coordinates: [number, number],
   value: string
@@ -40,11 +38,6 @@ export async function getNumberOfHousesSantaVisited(
   return visitedHouses.size;
 }
 
-const input = await fs.readFile("./src/input/03.txt", "utf-8");
-const numberOfHousesSantaVisited = await getNumberOfHousesSantaVisited(input);
-
-console.log(`Santa visited ${numberOfHousesSantaVisited} houses.`);
-
 export async function getNumberOfHousesSantaAndRoboSantaVisited(
   input: string
 ): Promise<number> {
@@ -65,10 +58,3 @@ export async function getNumberOfHousesSantaAndRoboSantaVisited(
 
   return visitedHouses.size;
 }
-
-const numberOfHousesSantaAndRoboSantaVisited =
-  await getNumberOfHousesSantaAndRoboSantaVisited(input);
-
-console.log(
-  `Santa and Robo-Santa combined to visit ${numberOfHousesSantaAndRoboSantaVisited} houses.`
-);

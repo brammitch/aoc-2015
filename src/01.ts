@@ -1,5 +1,3 @@
-import fs from "node:fs/promises";
-
 export async function getFloors(input: string): Promise<{
   floor: number;
   position: number;
@@ -28,9 +26,3 @@ export async function getFloors(input: string): Promise<{
 
   return { floor, position };
 }
-
-const input = await fs.readFile("./src/input/01.txt", "utf-8");
-const { floor, position } = await getFloors(input);
-
-console.log("Basement entered at position:", position);
-console.log("Final floor:", floor);
