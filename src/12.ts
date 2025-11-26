@@ -7,7 +7,11 @@ export async function importData(filename: string) {
   return json;
 }
 
-export function sumJsonNumbers(json: unknown, sum = 0): number {
+export function sumJsonNumbers(
+  json: unknown,
+  redFilter = false,
+  sum = 0
+): number {
   if (typeof json === "string") {
     if (Number.isFinite(Number(json))) {
       return (sum += Number(json));
@@ -17,19 +21,19 @@ export function sumJsonNumbers(json: unknown, sum = 0): number {
   } else if (typeof json === "number") {
     return (sum += json);
   } else if (Array.isArray(json)) {
-    json.forEach((j) => (sum = sumJsonNumbers(j, sum)));
+    json.forEach((j) => (sum = sumJsonNumbers(j, redFilter, sum)));
     return sum;
   } else if (typeof json === "object" && json !== null) {
-    Object.entries(json).map(([k, v]) => {
-      sum += sumJsonNumbers(k);
-      sum += sumJsonNumbers(v);
+    // Filter on red
+    if (redFilter && Object.values(json).some((v) => v === "red")) {
+      return sum;
+    }
+
+    Object.values(json).map((v) => {
+      sum += sumJsonNumbers(v, redFilter);
     });
     return sum;
   }
 
   return sum;
 }
-
-console.log(sumJsonNumbers([1, 2, 3]));
-console.log(sumJsonNumbers([[[3]]]));
-console.log(sumJsonNumbers([]));

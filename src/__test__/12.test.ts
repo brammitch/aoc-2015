@@ -28,3 +28,22 @@ describe("The solution to part one", () => {
     assert.strictEqual(sumJsonNumbers(data), 156_366);
   });
 });
+
+describe("The solution for part two", () => {
+  it("filters out objects with values of 'red'", () => {
+    assert.strictEqual(sumJsonNumbers([1, { c: "red", b: 2 }, 3], true), 4);
+    assert.strictEqual(
+      sumJsonNumbers({ d: "red", e: [1, 2, 3, 4], f: 5 }, true),
+      0
+    );
+    assert.strictEqual(sumJsonNumbers([1, "red", 5], true), 6);
+  });
+});
+
+describe("The solution to part two", () => {
+  it("is correct", async () => {
+    const data = await importData("./src/input/12.json");
+    console.log("data", data);
+    assert.strictEqual(sumJsonNumbers(data, true), 96_852);
+  });
+});
