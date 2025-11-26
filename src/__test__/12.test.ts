@@ -24,7 +24,6 @@ describe("sumJsonNumbers", () => {
 describe("The solution to part one", () => {
   it("is correct", async () => {
     const data = await importData("./src/input/12.json");
-    console.log("data", data);
     assert.strictEqual(sumJsonNumbers(data), 156_366);
   });
 });
@@ -43,7 +42,6 @@ describe("The solution for part two", () => {
 describe("The solution to part two", () => {
   it("is correct", async () => {
     const data = await importData("./src/input/12.json");
-    console.log("data", data);
     assert.strictEqual(sumJsonNumbers(data, true), 96_852);
   });
 });

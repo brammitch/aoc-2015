@@ -121,7 +121,6 @@ describe("solvePartOne", () => {
 describe("solvePartTwo", () => {
   it("returns the signal provided to 'wire a'", async () => {
     const signal = await solvePartTwo();
-    console.log("signal.b", signal.b);
     assert.equal(signal.a, 14134);
   });
 });

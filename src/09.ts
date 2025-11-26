@@ -48,15 +48,6 @@ export async function findRequestedRoutes(
     );
   });
 
-  console.log("\nShortest routes for each starting location:");
-  shortestRouteTrackers.forEach((rt) => {
-    console.log([...rt[0]].join(" -> "), rt[1]);
-  });
-  console.log("\nLongest routes for each starting location:");
-  longestRouteTrackers.forEach((rt) => {
-    console.log([...rt[0]].join(" -> "), rt[1]);
-  });
-
   return {
     longest: longestRouteTrackers.sort((a, b) => b[1] - a[1])[0]?.[1] ?? 0,
     shortest: shortestRouteTrackers.sort((a, b) => a[1] - b[1])[0]?.[1] ?? 0,
