@@ -12,6 +12,7 @@
     "@types/node": "^24.10.1"
   },
   "dependencies": {
+    "js-combinatorics": "^2.1.2",
     "matrix-js": "^1.7.1"
   }
 }
