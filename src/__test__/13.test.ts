@@ -19,12 +19,17 @@ describe("parseSeatingList", () => {
 
 describe("getOptimalHappiness", () => {
   it("returns 330 for the sample dataset", async () => {
-    const seatingList = await parseSeatingList("./src/input/13.test.txt");
-    assert.strictEqual(getOptimalHappiness(seatingList), 330);
+    const seatMap = await parseSeatingList("./src/input/13.test.txt");
+    assert.strictEqual(getOptimalHappiness(seatMap), 330);
   });
 
   it("returns the correct answer for part one", async () => {
-    const seatingList = await parseSeatingList("./src/input/13.txt");
-    assert.strictEqual(getOptimalHappiness(seatingList), 618);
+    const seatMap = await parseSeatingList("./src/input/13.txt");
+    assert.strictEqual(getOptimalHappiness(seatMap), 618);
+  });
+
+  it("calculates happiness when I'm seated at the table, too", async () => {
+    const seatMap = await parseSeatingList("./src/input/13.txt");
+    assert.strictEqual(getOptimalHappiness(seatMap, true), 601);
   });
 });
